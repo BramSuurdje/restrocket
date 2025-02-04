@@ -2,15 +2,15 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { StatusCodes } from "http-status-codes";
 import { serveEmojiFavicon } from "stoker/middlewares";
-import { getRouteKey, routeNames } from "./config/routes";
-import type { auth } from "./lib/auth";
-import { formatResponse } from "./lib/response";
-import { loggerMiddleware } from "./middlewares/logger";
-import prisma from "./lib/prisma";
-import * as Schemas from "./prisma";
 import type { ZodSchema } from "zod";
 import type * as z from "zod";
+import { getRouteKey, routeNames } from "./config/routes";
+import type { auth } from "./lib/auth";
+import prisma from "./lib/prisma";
+import { formatResponse } from "./lib/response";
+import { loggerMiddleware } from "./middlewares/logger";
 import { rateLimiterMiddleware } from "./middlewares/ratelimiter";
+import * as Schemas from "./prisma";
 
 // Define types for Prisma models, excluding internal Prisma methods
 type PrismaModels = Exclude<

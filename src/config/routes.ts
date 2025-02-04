@@ -34,8 +34,8 @@ export const routeNames = Object.values(routeConfigurations).map(
 export const getRouteKey = (routeName: string) => {
 	return Object.keys(routeConfigurations).find(
 		(key) =>
-			routeConfigurations[key as keyof typeof routeConfigurations]?.routeName ===
-			routeName,
+			routeConfigurations[key as keyof typeof routeConfigurations]
+				?.routeName === routeName,
 	);
 };
 
