@@ -2,22 +2,9 @@ import { XMLConfig } from "@/config/xml";
 import { StatusCodes } from "http-status-codes";
 import { toXML } from "jstoxml";
 
-interface ResponseData {
-	status?: string;
-	data?: unknown;
-	message?: string;
-	timestamp?: string;
-	route?: string;
-	id?: string;
-	totalItems?: number;
-	currentPage?: number;
-	itemsPerPage?: number;
-	totalPages?: number;
-	hasNextPage?: boolean;
-	hasPreviousPage?: boolean;
-}
 export const formatResponse = (
-	data: ResponseData,
+	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+	data: any,
 	acceptHeader = "application/json",
 	status = StatusCodes.OK,
 ) => {
