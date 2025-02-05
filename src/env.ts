@@ -1,5 +1,4 @@
 import * as path from "node:path";
-/* eslint-disable node/no-process-env */
 import { config } from "dotenv";
 import { expand } from "dotenv-expand";
 import { z } from "zod";
