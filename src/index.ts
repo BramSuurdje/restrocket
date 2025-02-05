@@ -11,6 +11,7 @@ import { formatResponse } from "./lib/response";
 import { loggerMiddleware } from "./middlewares/logger";
 import { rateLimiterMiddleware } from "./middlewares/ratelimiter";
 import * as Schemas from "./prisma";
+import env from "./env";
 
 // Define types for Prisma models, excluding internal Prisma methods
 type PrismaModels = Exclude<
@@ -268,7 +269,7 @@ app.on(["GET", "PUT", "PATCH", "DELETE"], "/api/v1/:route/:id", async (c) => {
 app.use(
 	"/api/auth/**",
 	cors({
-		origin: process.env.BETTER_AUTH_URL || "http://localhost:3000",
+		origin: env.BETTER_AUTH_URL || "http://localhost:3000",
 		allowHeaders: ["Content-Type", "Authorization"],
 		allowMethods: ["POST", "GET", "OPTIONS"],
 		exposeHeaders: ["Content-Length"],

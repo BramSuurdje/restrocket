@@ -1,10 +1,11 @@
+import env from "@/env";
 import type { MiddlewareHandler } from "hono";
 import { pinoLogger } from "hono-pino";
 import pino from "pino";
 
 export const loggerMiddleware: MiddlewareHandler = pinoLogger({
 	pino: pino(
-		process.env.NODE_ENV === "production"
+		env.NODE_ENV === "production"
 			? undefined
 			: {
 					transport: {

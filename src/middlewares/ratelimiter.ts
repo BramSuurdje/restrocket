@@ -1,3 +1,4 @@
+import env from "@/env";
 import { formatResponse } from "@/lib/response";
 import type { MiddlewareHandler } from "hono";
 import { getConnInfo } from "hono/bun";
@@ -5,18 +6,16 @@ import { StatusCodes } from "http-status-codes";
 import Redis from "ioredis";
 import { RateLimiterRedis } from "rate-limiter-flexible";
 
-const client = new Redis(
-	`rediss://default:${process.env.REDIS_PASSWORD}@${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`,
-);
+const client = new Redis(env.REDIS_STRING ?? "");
 
 const rateLimiter = new RateLimiterRedis({
 	storeClient: client,
-	points: Number(process.env.RATE_LIMITER_POINTS), // requests allowed
-	duration: Number(process.env.RATE_LIMITER_DURATION), // in seconds
+	points: Number(env.RATE_LIMITER_POINTS), // requests allowed
+	duration: Number(env.RATE_LIMITER_DURATION), // in seconds
 });
 
 export const rateLimiterMiddleware: MiddlewareHandler = async (c, next) => {
-	if (process.env.NODE_ENV !== "production") return next();
+	if (env.NODE_ENV !== "production") return next();
 
 	const info = getConnInfo(c);
 	const ip = info.remote.address ?? "127.0.0.1";
@@ -27,7 +26,7 @@ export const rateLimiterMiddleware: MiddlewareHandler = async (c, next) => {
 			c.header("Retry-After", String(limiter.msBeforeNext / 1000));
 			c.header(
 				"X-RateLimit-Limit",
-				String(Number(process.env.RATE_LIMITER_POINTS)),
+				String(Number(env.RATE_LIMITER_POINTS)),
 			); // Using points from rateLimiter config
 			c.header("X-RateLimit-Remaining", String(limiter.remainingPoints));
 			c.header(
