@@ -61,10 +61,14 @@ app.notFound((c) => {
  * Health check endpoint
  */
 app.get("/api/health", (c) => {
-	return formatResponse({
-		status: "ok",
-		timestamp: new Date().toISOString(),
-	});
+	const header = c.req.header("accept");
+	return formatResponse(
+		{
+			status: "ok",
+			timestamp: new Date().toISOString(),
+		},
+		header,
+	);
 });
 
 /**
