@@ -5,13 +5,13 @@ import { serveEmojiFavicon } from "stoker/middlewares";
 import type { ZodSchema } from "zod";
 import type * as z from "zod";
 import { getRouteKey, routeNames } from "./config/routes";
+import env from "./env";
 import type { auth } from "./lib/auth";
 import prisma from "./lib/prisma";
 import { formatResponse } from "./lib/response";
 import { loggerMiddleware } from "./middlewares/logger";
 import { rateLimiterMiddleware } from "./middlewares/ratelimiter";
 import * as Schemas from "./prisma";
-import env from "./env";
 
 // Define types for Prisma models, excluding internal Prisma methods
 type PrismaModels = Exclude<

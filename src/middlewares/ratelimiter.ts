@@ -24,10 +24,7 @@ export const rateLimiterMiddleware: MiddlewareHandler = async (c, next) => {
 		.consume(ip)
 		.then((limiter) => {
 			c.header("Retry-After", String(limiter.msBeforeNext / 1000));
-			c.header(
-				"X-RateLimit-Limit",
-				String(Number(env.RATE_LIMITER_POINTS)),
-			); // Using points from rateLimiter config
+			c.header("X-RateLimit-Limit", String(Number(env.RATE_LIMITER_POINTS))); // Using points from rateLimiter config
 			c.header("X-RateLimit-Remaining", String(limiter.remainingPoints));
 			c.header(
 				"X-RateLimit-Reset",
