@@ -32,7 +32,7 @@ RestRocket is a lightning-fast, developer-friendly framework for creating REST A
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/BramSuurdje/restrocket.git
+   git clone https://github.com/BramSuurdje/RestRocket.git
    cd restrocket
    ```
 
