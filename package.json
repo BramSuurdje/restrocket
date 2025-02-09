@@ -9,6 +9,7 @@
 		"build": "bunx prisma generate",
 		"start": "NODE_ENV=production bun run src/index.ts",
 		"format": "biome check --write src",
+		"lint": "biome check src --write",
 		"migrate:dev": "bunx prisma migrate dev",
 		"migrate:deploy": "bunx prisma migrate deploy"
 	},
