@@ -5,6 +5,14 @@
   the route cannot be created.
 */
 
+export const routeConfigurations: RouteConfigInputType = {
+	Post: { routeName: "post" },
+} as const;
+
+/**
+ * Configurations
+ */
+
 import type { Prisma } from "@prisma/client";
 import type * as Schemas from "../lib/prisma";
 
@@ -12,13 +20,6 @@ import type * as Schemas from "../lib/prisma";
 export interface RouteConfig {
 	routeName: string;
 }
-
-export const routeConfigurations: RouteConfigInputType = {
-	User: { routeName: "user" },
-	Session: { routeName: "session" },
-	Hello: { routeName: "hello" },
-	ShalomTestingRoute: { routeName: "shalom-testing-route" },
-} as const;
 
 export type PrismaModels = Prisma.ModelName;
 export type RouteName = Lowercase<PrismaModels>;

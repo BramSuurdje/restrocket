@@ -18,24 +18,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Hello {
-  id String @id @default(uuid())
-  name String
+model Post {
+  id        String   @id @default(uuid())
+  title     String
+  content   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  @@map("hello")
-}
-
-model ShalomTestingRoute {
-  id String @id @default(uuid())
-  name String
-  description String
-  yes Boolean
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("shalom_testing_route")
 }
 
 // These are the tables that are created by better-auth
