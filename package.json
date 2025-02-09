@@ -3,13 +3,14 @@
 	"license": "MIT",
 	"author": "Bram Suurd",
 	"version": "0.0.1",
+	"type": "module",
 	"scripts": {
 		"dev": "bun run --hot src/index.ts",
 		"build": "bunx prisma generate",
 		"start": "NODE_ENV=production bun run src/index.ts",
 		"format": "biome check --write src",
 		"migrate:dev": "bunx prisma migrate dev",
-		"migrate:prod": "bunx prisma migrate deploy"
+		"migrate:deploy": "bunx prisma migrate deploy"
 	},
 	"pre-commit": [
 		"format"
@@ -17,13 +18,13 @@
 	"dependencies": {
 		"@prisma/client": "6.3.0",
 		"@types/jstoxml": "^5.0.0",
-		"better-auth": "^1.1.15",
+		"better-auth": "^1.1.16",
 		"dotenv": "^16.4.7",
 		"dotenv-expand": "^12.0.1",
-		"hono": "^4.6.19",
-		"hono-pino": "^0.7.0",
+		"hono": "^4.7.0",
+		"hono-pino": "^0.7.2",
 		"http-status-codes": "^2.3.0",
-		"ioredis": "^5.4.2",
+		"ioredis": "^5.5.0",
 		"jstoxml": "^5.0.2",
 		"pino": "^9.6.0",
 		"pino-pretty": "^13.0.0",
@@ -32,7 +33,7 @@
 		"stoker": "^1.4.2",
 		"uuid": "^11.0.5",
 		"zod": "^3.24.1",
-		"zod-prisma-types": "^3.2.1"
+		"zod-prisma-types": "^3.2.4"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
