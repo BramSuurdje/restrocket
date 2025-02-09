@@ -14,7 +14,7 @@ expand(
 	config({
 		path: path.resolve(
 			process.cwd(),
-			// biome-ignore lint/nursery/noProcessEnv: process.env is only allowed in env.ts 
+			// biome-ignore lint/nursery/noProcessEnv: process.env is only allowed in env.ts
 			process.env.NODE_ENV === "test" ? ".env.test" : ".env",
 		),
 	}),
